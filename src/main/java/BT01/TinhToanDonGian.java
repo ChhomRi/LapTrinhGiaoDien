@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 /**
  *
  * @author DELL
@@ -73,46 +74,55 @@ public class TinhToanDonGian extends JFrame{
                
                add(p);
                //Xử lý phép tính cổng
-               btCong.addActionListener(new ActionListener() {
+                btCong.addActionListener(new ActionListener() {
                   @Override
                   public void actionPerformed(ActionEvent e) {
                       //lấy giá trị trong JTextField chuyển sang số
-                        double x = Double.parseDouble(txtSo1.getText());
+                      try{
+                          double x = Double.parseDouble(txtSo1.getText());
                         double y = Double.parseDouble(txtSo2.getText());
-                        double kq = x+y;
+                        double kq = x/y;
                         txtKetqua.setText(String.valueOf(kq));
-                        
-                        
+                      }catch(Exception ex){
+                          JOptionPane.showMessageDialog(null, "Giá trị không hợp lệ");
+                      }
+                      
                         
                         
                     }
                   
                });
-               btTru.addActionListener(new ActionListener() {
+                btTru.addActionListener(new ActionListener() {
                   @Override
                   public void actionPerformed(ActionEvent e) {
                       //lấy giá trị trong JTextField chuyển sang số
-                        double x = Double.parseDouble(txtSo1.getText());
+                      try{
+                          double x = Double.parseDouble(txtSo1.getText());
                         double y = Double.parseDouble(txtSo2.getText());
-                        double kq = x-y;
+                        double kq = x/y;
                         txtKetqua.setText(String.valueOf(kq));
-                        
-                        
+                      }catch(Exception ex){
+                          JOptionPane.showMessageDialog(null, "Giá trị không hợp lệ");
+                      }
+                      
                         
                         
                     }
                   
                });
-               btNhan.addActionListener(new ActionListener() {
+                btNhan.addActionListener(new ActionListener() {
                   @Override
                   public void actionPerformed(ActionEvent e) {
                       //lấy giá trị trong JTextField chuyển sang số
-                        double x = Double.parseDouble(txtSo1.getText());
+                      try{
+                          double x = Double.parseDouble(txtSo1.getText());
                         double y = Double.parseDouble(txtSo2.getText());
-                        double kq = x*y;
+                        double kq = x/y;
                         txtKetqua.setText(String.valueOf(kq));
-                        
-                        
+                      }catch(Exception ex){
+                          JOptionPane.showMessageDialog(null, "Giá trị không hợp lệ");
+                      }
+                      
                         
                         
                     }
@@ -122,12 +132,15 @@ public class TinhToanDonGian extends JFrame{
                   @Override
                   public void actionPerformed(ActionEvent e) {
                       //lấy giá trị trong JTextField chuyển sang số
-                        double x = Double.parseDouble(txtSo1.getText());
+                      try{
+                          double x = Double.parseDouble(txtSo1.getText());
                         double y = Double.parseDouble(txtSo2.getText());
                         double kq = x/y;
                         txtKetqua.setText(String.valueOf(kq));
-                        
-                        
+                      }catch(Exception ex){
+                          JOptionPane.showMessageDialog(null, "Giá trị không hợp lệ");
+                      }
+                      
                         
                         
                     }
