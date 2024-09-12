@@ -6,6 +6,7 @@ package BT01;
 import gui.*;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,22 +24,23 @@ import javax.swing.JOptionPane;
 public class TinhToanDonGian extends JFrame{
     private JLabel lbSo1,lbSo2, lbKetQua;
     private JTextField txtSo1, txtSo2,txtKetqua;
-    private JButton btCong,btTru,btNhan,btChia;
+    private JButton btCong,btTru,btNhan,btChia,btKetThuc;
      
     
     public TinhToanDonGian(String title){
         super(title);
         createGUI();
         
-        setSize(400,300);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        pack();
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
         
     }
     private void createGUI() {
               //Tạo thùng chứa p1
               JPanel p = new JPanel();
-              p.setLayout(null);
+              p.setLayout(new  GridLayout(6,3,20,20));
               p.add(lbSo1 = new JLabel("Số 1"));
               p.add(txtSo1 = new JTextField(10));
               
@@ -49,28 +51,20 @@ public class TinhToanDonGian extends JFrame{
               
               p.add(lbKetQua = new JLabel("Result"));
               p.add(txtKetqua = new JTextField(10));
-              
-              
+              txtKetqua.setEditable(false);
+             
               //Tạo thùng chứa p2
               
                p.add(btCong = new JButton("Cộng"));
                p.add(btTru = new JButton("Trừ"));
                p.add(btNhan = new JButton("Nhân"));
                p.add(btChia= new JButton("Chia"));
+               p.add(btKetThuc = new JButton("Kết thúc"));
                
                
-               lbSo1.setBounds(10, 10, 100, 30);
-               txtSo1.setBounds(120, 10, 200, 30);
-               lbSo2.setBounds(10, 50, 100, 30);
-               txtSo2.setBounds(120, 50, 200, 30);
-               lbKetQua.setBounds(10, 100, 100, 30);
-               txtKetqua.setBounds(120, 100, 200, 30);
-               
-               btCong.setBounds(10, 140, 80, 40);
-               btTru.setBounds(100, 140, 80, 40);
-               btNhan.setBounds(190, 140, 80, 40);
-               btChia.setBounds(280, 140, 80, 40);
-               
+              
+              
+              
                
                add(p);
                //Xử lý phép tính cổng
@@ -79,9 +73,9 @@ public class TinhToanDonGian extends JFrame{
                   public void actionPerformed(ActionEvent e) {
                       //lấy giá trị trong JTextField chuyển sang số
                       try{
-                          double x = Double.parseDouble(txtSo1.getText());
+                        double x = Double.parseDouble(txtSo1.getText());
                         double y = Double.parseDouble(txtSo2.getText());
-                        double kq = x/y;
+                        double kq = x*y;
                         txtKetqua.setText(String.valueOf(kq));
                       }catch(Exception ex){
                           JOptionPane.showMessageDialog(null, "Giá trị không hợp lệ");
@@ -99,7 +93,7 @@ public class TinhToanDonGian extends JFrame{
                       try{
                           double x = Double.parseDouble(txtSo1.getText());
                         double y = Double.parseDouble(txtSo2.getText());
-                        double kq = x/y;
+                        double kq = x-y;
                         txtKetqua.setText(String.valueOf(kq));
                       }catch(Exception ex){
                           JOptionPane.showMessageDialog(null, "Giá trị không hợp lệ");
@@ -117,7 +111,7 @@ public class TinhToanDonGian extends JFrame{
                       try{
                           double x = Double.parseDouble(txtSo1.getText());
                         double y = Double.parseDouble(txtSo2.getText());
-                        double kq = x/y;
+                        double kq = x*y;
                         txtKetqua.setText(String.valueOf(kq));
                       }catch(Exception ex){
                           JOptionPane.showMessageDialog(null, "Giá trị không hợp lệ");
@@ -146,6 +140,18 @@ public class TinhToanDonGian extends JFrame{
                     }
                   
                });
+               btKetThuc.addActionListener(new ActionListener() {
+                  @Override
+                  public void actionPerformed(ActionEvent e) {
+                      int chon = JOptionPane.showConfirmDialog(null, "Bạn có chắc đóng ứng dụng", "Hỏi lại", JOptionPane.YES_NO_OPTION);
+                      if(chon == JOptionPane.YES_OPTION){
+                          System.exit(0);
+                      } 
+                        
+                    }
+                  
+               });
+               
                
               
               
